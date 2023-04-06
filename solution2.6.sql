@@ -31,7 +31,7 @@ HAVING AVG(length) > 120;
 
 -- 8. Rank films by length (filter out the rows that have nulls or 0s in length column). 
 -- In your output, only select the columns title, length, and the rank.
-SELECT title, length, rank() OVER (partition by length ORDER BY length) as 'Rank' FROM film
+SELECT title, length, dense_rank() OVER (ORDER BY length) as 'Rank' FROM film
 WHERE length <> 0 or null;
 
 
